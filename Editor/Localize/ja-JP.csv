@@ -1,0 +1,11 @@
+
+# SymbolSettings
+Edit Settings	設定を編集する
+ActiveBuildTarget	現在のビルドターゲット
+Preview ScriptingDefineSymbols	ScriptingDefineSymbolsのプレビュー
+Project "ScriptingDefineSymbols"	プロジェクト "ScriptingDefineSymbols"
+Editor Shared "ScriptingDefineSymbols"	エディタ共通 "ScriptingDefineSymbols"
+BuildOnly "ScriptingDefineSymbols"	ビルドのみ有効 "ScriptingDefineSymbols"
+Enable Platform	有効なプラットフォーム
+Show Built-in Symbols	組み込みシンボルを表示する
+Nothing can be specified for the current build target	現在のビルドターゲットで指定できるものがありません

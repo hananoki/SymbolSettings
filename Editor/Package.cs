@@ -6,7 +6,7 @@ namespace Hananoki.SymbolSettings {
   public static class Package {
     public const string name = "SymbolSettings";
     public const string editorPrefName = "Hananoki.SymbolSettings";
-    public const string version = "1.0.0";
+    public const string version = "1.0.1";
     public static string projectSettingsPath => $"{Environment.CurrentDirectory}/ProjectSettings/SymbolSettings.json";
   }
   

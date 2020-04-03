@@ -91,7 +91,7 @@ namespace Hananoki.SymbolSettings {
 				p.toggle = false;
 			}
 
-			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup( UEditorUserBuildSettings.activeBuildTargetGroup ).Split( ';' );
+			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup ).Split( ';' );
 			foreach( var s in symbols ) {
 				int index = self.m_projectSymbols.datas.FindIndex( x => x.name == s );
 				if( 0 <= index ) {
@@ -321,7 +321,7 @@ namespace Hananoki.SymbolSettings {
 
 		void DrawSettingMode() {
 
-			int index = currentSuppotPlatform.FindIndex( x => x == (int) UEditorUserBuildSettings.activeBuildTargetGroup );
+			int index = currentSuppotPlatform.FindIndex( x => x == (int) UnityEditorUserBuildSettings.activeBuildTargetGroup );
 			if( index < 0 ) {
 				EditorGUILayout.HelpBox( S._Nothingcanbespecifiedforthecurrentbuildtarget, MessageType.Warning );
 			}
@@ -340,7 +340,7 @@ namespace Hananoki.SymbolSettings {
 				EditorGUI.EndDisabledGroup();
 
 				if( GUILayout.Button( SS._Clear ) ) {
-					PlayerSettings.SetScriptingDefineSymbolsForGroup( UEditorUserBuildSettings.activeBuildTargetGroup, "" );
+					PlayerSettings.SetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup, "" );
 				}
 
 				//if( GUILayout.Button( "Check" ) ) {
@@ -389,7 +389,7 @@ namespace Hananoki.SymbolSettings {
 		void DrawGUIPreview() {
 			EditorGUILayout.LabelField( S._PreviewScriptingDefineSymbols, s_Styles.BoldLabel );
 			EditorGUI.BeginDisabledGroup( true );
-			EditorGUILayout.TextField( PlayerSettings.GetScriptingDefineSymbolsForGroup( UEditorUserBuildSettings.activeBuildTargetGroup ) );
+			EditorGUILayout.TextField( PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup ) );
 			EditorGUI.EndDisabledGroup();
 		}
 

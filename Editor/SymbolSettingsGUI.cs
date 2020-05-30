@@ -1,7 +1,4 @@
-﻿using Hananoki;
-using Hananoki;
-using Hananoki.Reflection;
-//using Hananoki.SymbolSettings.Localize;
+﻿//using Hananoki.SymbolSettings.Localize;
 using System;
 using System.Collections.Generic;
 using System.Linq;

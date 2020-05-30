@@ -1,9 +1,6 @@
-﻿
-using Hananoki;
-using Hananoki;
-using System;
-using System.Linq;
+﻿using System;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace Hananoki.SymbolSettings {

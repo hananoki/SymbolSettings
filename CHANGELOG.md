@@ -1,5 +1,11 @@
 # SymbolSettings
 
+## [1.0.2] - 2020-05-31
+
+### Changed
+- Refactoring of using
+- Set "Auto Referenced" of asmdef to false
+
 ## [1.0.1] - 2020-04-04
 - SharedModule v1.1.0 is supported
 

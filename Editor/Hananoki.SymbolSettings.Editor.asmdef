@@ -2,7 +2,8 @@
     "name": "Hananoki.SymbolSettings.Editor",
     "references": [
         "Hananoki.SharedModule.Runtime",
-        "Hananoki.SharedModule.RuntimeEditor"
+        "Hananoki.SharedModule.RuntimeEditor",
+        "Hananoki.UnitySymbol.Editor"
     ],
     "includePlatforms": [
         "Editor"

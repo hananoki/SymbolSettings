@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -41,9 +42,12 @@ namespace Hananoki.SymbolSettings {
 		}
 
 
-		public static (string[], string[]) GetSymbolList() {
+		public static SymbolStringList GetSymbolList() {
 			Load();
-			return (i.m_projectSymbols.datas.Select( x => x.name ).ToArray(), i.m_editorSymbols.datas.Select( x => x.name ).ToArray());
+			return new SymbolStringList() {
+				project = i.m_projectSymbols.datas.Select( x => x.name ).ToArray(),
+				editor = i.m_editorSymbols.datas.Select( x => x.name ).ToArray(),
+			};
 		}
 	}
 }

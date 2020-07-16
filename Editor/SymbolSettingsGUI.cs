@@ -42,11 +42,11 @@ namespace Hananoki.SymbolSettings {
 				IconSize = 16;
 				DropDownOffset = 10;
 				ColorAlpha = 0.25f;
-#if UNITY_2019_3_OR_NEWER // UI調整
-				IconSize = 18;
-				DropDownOffset = 16;
-				ColorAlpha = 0.25f;
-#endif
+				if( UnitySymbol.Has( "UNITY_2019_3_OR_NEWER" ) ) {
+					IconSize = 18;
+					DropDownOffset = 16;
+					ColorAlpha = 0.25f;
+				}
 				ButtonIcon = new GUIStyle( EditorStyles.label );
 				ButtonIcon.margin = new RectOffset( 4, 4, 0, 0 );
 				ButtonIcon.padding = new RectOffset( 0, 0, 0, 0 );

@@ -31,4 +31,9 @@ namespace Hananoki.SymbolSettings {
 		public List<SymbolData> datas = new List<SymbolData>();
 	}
 
+
+	public class SymbolStringList {
+		public string[] project;
+		public string[] editor;
+	}
 }

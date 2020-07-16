@@ -22,7 +22,7 @@
 ```
 
 ## Requirement
-![](https://img.shields.io/badge/SharedModule-v1.1.0%20or%20later-blue.svg)
+![](https://img.shields.io/badge/SharedModule-v1.5.0%20or%20later-blue.svg)
 
 ## Licence
 

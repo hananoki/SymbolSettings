@@ -1,100 +1,68 @@
 ﻿
-#if UNITY_2018_3_OR_NEWER
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
-using System.Reflection;
-using Hananoki;
+using Hananoki.SharedModule;
 
-#if UNITY_2019_1_OR_NEWER // using
-using UnityEngine.UIElements;
-#else
-using UnityEngine.Experimental.UIElements;
-#endif
-//using Pref = Hananoki.EditorToolbar.EditorToolbarPreference;
-//using Settings = Hananoki.EditorToolbar.EditorToolbarSettings;
-
-#if UNITY_2018_3_OR_NEWER
 
 namespace Hananoki.SymbolSettings {
 
-	public class SymbolSettingsProvider : SettingsProvider {
+	public static class SymbolSettingsProvider {
 
-		SymbolSettingsGUI m_editor;
+		static SymbolSettingsGUI m_editor;
 
-		public SymbolSettingsProvider( string path, SettingsScope scope ) : base( path, scope ) {
+		public static void DrawGUI2() {
+			DrawGUI( "" );
+		}
+
+		public static void DrawGUI( string searchText ) {
 			SettingsProject.Load();
-			m_editor = SymbolSettingsGUI.Create( SettingsProject.i );
-		}
-
-
-		public override void OnActivate( string searchContext, VisualElement rootElement ) {
-			SettingsProject.Load();
-			m_editor = SymbolSettingsGUI.Create( SettingsProject.i );
-		}
-
-		//public override void OnDeactivate() {}
-
-		public override void OnTitleBarGUI() {
-			GUILayout.Label( $"{Package.version}", EditorStyles.miniLabel );
-		}
-
-		public void DrawGUI() {
-
+			if( m_editor == null ) {
+				m_editor = SymbolSettingsGUI.Create( SettingsProject.i );
+			}
 			GUILayout.BeginHorizontal();
 			GUILayout.Space( 4 );
 			GUILayout.BeginVertical();
 			m_editor?.OnDrawGUI();
 			GUILayout.EndVertical();
 			GUILayout.EndHorizontal();
-
-			//using( new GUILayout.HorizontalScope() ) {
-			//	if( GUILayout.Button( "Register Class" ) ) {
-			//		var t = typeof( EditorToolbarClass );
-			//		Settings.i.reg = new List<Settings.Module>();
-			//		foreach( Assembly assembly in AppDomain.CurrentDomain.GetAssemblies() ) {
-			//			foreach( Type type in assembly.GetTypes() ) {
-			//				if( type.GetCustomAttribute( t ) == null ) continue;
-			//				Settings.i.reg.Add( new Settings.Module( assembly.FullName.Split( ',' )[ 0 ], type.FullName ) );
-			//			}
-			//		}
-			//		Settings.Save();
-			//		EditorToolbar.MakeMenuCommand();
-			//	}
-			//	if( GUILayout.Button( "Unregister Class" ) ) {
-			//		Settings.i.reg = new List<Settings.Module>();
-			//		Settings.Save();
-			//		EditorToolbar.MakeMenuCommand();
-			//	}
-			//}
-			//if( Settings.i.reg != null ) {
-			//	foreach( var p in Settings.i.reg ) {
-			//		EditorGUILayout.LabelField( $"{p.assemblyName} : {p.className}" );
-			//	}
-			//}
-		}
-
-		public override void OnGUI( string searchContext ) {
-			DrawGUI();
 		}
 
 
-		//public override void OnFooterBarGUI() {}
 
+#if !ENABLE_HANANOKI_SETTINGS
+#if UNITY_2018_3_OR_NEWER && !ENABLE_LEGACY_PREFERENCE
 		[SettingsProvider]
-		private static SettingsProvider Create() {
-			//if( !Pref.i.enableProjectSettingsProvider ) return null;
-			var provider = new SymbolSettingsProvider( $"Hananoki/{Package.name}", SettingsScope.Project );
-
+		static SettingsProvider Create() {
+			var provider = new SettingsProvider( $"Hananoki/{Package.name}", SettingsScope.Project ) {
+				label = Package.name,
+				guiHandler = DrawGUI,
+				titleBarGuiHandler = () => GUILayout.Label( $"{Package.version}", EditorStyles.miniLabel ),
+			};
 			return provider;
+			////if( !Pref.i.enableProjectSettingsProvider ) return null;
+			//var provider = new SymbolSettingsProvider( $"Hananoki/{Package.name}", SettingsScope.Project );
+
+			//return provider;
+		}
+#endif
+#endif
+	}
+
+
+
+#if ENABLE_HANANOKI_SETTINGS
+	[SettingsClass]
+	public class SettingsEvent {
+		[SettingsMethod]
+		public static SettingsItem Changed() {
+			return new SettingsItem() {
+				mode = 1,
+				displayName = Package.name,
+				version = Package.version,
+				gui = SymbolSettingsProvider.DrawGUI2,
+			};
 		}
 	}
+#endif
 }
 
-#endif
 
-#endif

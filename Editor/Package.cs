@@ -6,8 +6,8 @@ namespace Hananoki.SymbolSettings {
   public static class Package {
     public const string name = "SymbolSettings";
     public const string editorPrefName = "Hananoki.SymbolSettings";
-    public const string version = "1.0.2";
-    public static string projectSettingsPath => $"{Environment.CurrentDirectory}/ProjectSettings/SymbolSettings.json";
+    public const string version = "1.0.3";
+    public static string projectSettingsPath => $"{SharedModule.SettingsEditor.projectSettingDirectory}/SymbolSettings.json";
   }
   
 #if UNITY_EDITOR

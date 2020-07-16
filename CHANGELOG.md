@@ -1,5 +1,13 @@
 # SymbolSettings
 
+## [1.0.3] - 2020-07-16
+- SharedModule v1.5.0 is supported
+
+### Changed
+- Support for the new setting
+- Changed not to do tuple, DLL error handling
+- The Localize folder has been moved
+
 ## [1.0.2] - 2020-05-31
 
 ### Changed

@@ -1,6 +1,4 @@
-
-# SymbolSettings
-Edit Settings	設定を編集する
+﻿Edit Settings	設定を編集する
 ActiveBuildTarget	現在のビルドターゲット
 Preview ScriptingDefineSymbols	ScriptingDefineSymbolsのプレビュー
 Project "ScriptingDefineSymbols"	プロジェクト "ScriptingDefineSymbols"

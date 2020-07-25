@@ -1,0 +1,9 @@
+﻿Edit Settings
+ActiveBuildTarget
+Preview ScriptingDefineSymbols
+Project "ScriptingDefineSymbols"
+Editor Shared "ScriptingDefineSymbols"
+BuildOnly "ScriptingDefineSymbols"
+Enable Platform
+Show Built-in Symbols
+Nothing can be specified for the current build target

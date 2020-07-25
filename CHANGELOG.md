@@ -1,5 +1,10 @@
 # SymbolSettings
 
+## [1.0.4] - 2020-07-25
+
+### Fixed
+- Fix using error
+
 ## [1.0.3] - 2020-07-16
 - SharedModule v1.5.0 is supported
 

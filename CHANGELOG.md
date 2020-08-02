@@ -1,5 +1,10 @@
 # SymbolSettings
 
+## [1.0.5] - 2020-08-02
+
+### Changed
+- Changed dependencies in package.json
+
 ## [1.0.4] - 2020-07-25
 
 ### Fixed

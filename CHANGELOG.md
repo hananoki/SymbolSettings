@@ -1,5 +1,10 @@
 # SymbolSettings
 
+## [1.0.6] - 2020-08-08
+
+### Fixed
+- Removed unnecessary scrollbar
+
 ## [1.0.5] - 2020-08-02
 
 ### Changed

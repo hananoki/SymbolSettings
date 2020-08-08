@@ -212,8 +212,8 @@ namespace Hananoki.SymbolSettings {
 			bool iOSCheckd = false;
 			bool metroCheckd = false;
 
-			using( var scrollView = new EditorGUILayout.ScrollViewScope( m_scrollPlatform, EditorStyles.helpBox ) ) {
-				m_scrollPlatform = scrollView.scrollPosition;
+			//using( var scrollView = new EditorGUILayout.ScrollViewScope( m_scrollPlatform, EditorStyles.helpBox ) ) {
+			//	m_scrollPlatform = scrollView.scrollPosition;
 				using( new EditorGUILayout.VerticalScope( EditorStyles.helpBox ) ) {
 					foreach( var e in values ) {
 						bool b = false;
@@ -240,7 +240,7 @@ namespace Hananoki.SymbolSettings {
 						}
 					}
 				}
-			}
+			//}
 		}
 
 
@@ -364,8 +364,8 @@ namespace Hananoki.SymbolSettings {
 
 			var bs = (GUIStyle) "button";
 			var bssize = bs.CalcSize( EditorHelper.TempContent( SS._Copytoclipboard ) );
-			using( var scrollView = new EditorGUILayout.ScrollViewScope( mScrollPos, EditorStyles.helpBox ) ) {
-				mScrollPos = scrollView.scrollPosition;
+			//using( var scrollView = new EditorGUILayout.ScrollViewScope( mScrollPos, EditorStyles.helpBox ) ) {
+			//	mScrollPos = scrollView.scrollPosition;
 				// 定義されているシンボルの一覧を表示します
 				foreach( var define in defines ) {
 					//EditorGUILayout.BeginHorizontal( GUILayout.Height( 20 ) );
@@ -379,7 +379,7 @@ namespace Hananoki.SymbolSettings {
 						EditorGUILayout.SelectableLabel( define, GUILayout.Height( 20 ) );
 					}
 				}
-			}
+			//}
 		}
 
 

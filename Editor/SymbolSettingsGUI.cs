@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEditorEditorUserBuildSettings = UnityReflection.UnityEditorEditorUserBuildSettings;
 
 using SS = Hananoki.SharedModule.S;
 
@@ -17,8 +18,8 @@ namespace Hananoki.SymbolSettings {
 		public bool m_hasDirty = false;
 
 		static bool s_showBuiltin;
-		Vector2 m_scrollPlatform;
-		Vector2 mScrollPos;
+		//Vector2 m_scrollPlatform;
+		//Vector2 mScrollPos;
 
 		ReorderableList m_rlst;
 		ReorderableList m_rlst2;
@@ -88,7 +89,7 @@ namespace Hananoki.SymbolSettings {
 				p.toggle = false;
 			}
 
-			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup ).Split( ';' );
+			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorEditorUserBuildSettings.activeBuildTargetGroup ).Split( ';' );
 			foreach( var s in symbols ) {
 				int index = self.m_projectSymbols.datas.FindIndex( x => x.name == s );
 				if( 0 <= index ) {
@@ -318,7 +319,7 @@ namespace Hananoki.SymbolSettings {
 
 		void DrawSettingMode() {
 
-			int index = currentSuppotPlatform.FindIndex( x => x == (int) UnityEditorUserBuildSettings.activeBuildTargetGroup );
+			int index = currentSuppotPlatform.FindIndex( x => x == (int) UnityEditorEditorUserBuildSettings.activeBuildTargetGroup );
 			if( index < 0 ) {
 				EditorGUILayout.HelpBox( S._Nothingcanbespecifiedforthecurrentbuildtarget, MessageType.Warning );
 			}
@@ -337,7 +338,7 @@ namespace Hananoki.SymbolSettings {
 				EditorGUI.EndDisabledGroup();
 
 				if( GUILayout.Button( SS._Clear ) ) {
-					PlayerSettings.SetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup, "" );
+					PlayerSettings.SetScriptingDefineSymbolsForGroup( UnityEditorEditorUserBuildSettings.activeBuildTargetGroup, "" );
 				}
 
 				//if( GUILayout.Button( "Check" ) ) {
@@ -386,7 +387,7 @@ namespace Hananoki.SymbolSettings {
 		void DrawGUIPreview() {
 			EditorGUILayout.LabelField( S._PreviewScriptingDefineSymbols, s_Styles.BoldLabel );
 			EditorGUI.BeginDisabledGroup( true );
-			EditorGUILayout.TextField( PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorUserBuildSettings.activeBuildTargetGroup ) );
+			EditorGUILayout.TextField( PlayerSettings.GetScriptingDefineSymbolsForGroup( UnityEditorEditorUserBuildSettings.activeBuildTargetGroup ) );
 			EditorGUI.EndDisabledGroup();
 		}
 

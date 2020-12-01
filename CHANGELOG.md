@@ -1,5 +1,8 @@
 # SymbolSettings
 
+## [1.0.7] - 2020-12-02
+- SharedModule v1.7.0 or later
+
 ## [1.0.6] - 2020-08-08
 
 ### Fixed

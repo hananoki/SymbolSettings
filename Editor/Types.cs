@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Hananoki;
+using HananokiEditor;
 
-namespace Hananoki.SymbolSettings {
+namespace HananokiEditor.SymbolSettings {
 	[Serializable]
 	public class SymbolData {
 		[NonSerialized]

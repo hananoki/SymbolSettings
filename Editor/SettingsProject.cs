@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace Hananoki.SymbolSettings {
+namespace HananokiEditor.SymbolSettings {
 
 	[Serializable]
 	public class SettingsProject {

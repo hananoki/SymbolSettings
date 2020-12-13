@@ -1,9 +1,10 @@
-﻿
+﻿#define ENABLE_HANANOKI_SETTINGS
+
 using UnityEngine;
-using Hananoki.SharedModule;
+using HananokiEditor.SharedModule;
 using UnityEditor;
 
-namespace Hananoki.SymbolSettings {
+namespace HananokiEditor.SymbolSettings {
 
 	public static class SymbolSettingsProvider {
 
@@ -50,13 +51,13 @@ namespace Hananoki.SymbolSettings {
 
 
 #if ENABLE_HANANOKI_SETTINGS
-	[SettingsClass]
+	//[SettingsClass]
 	public class SettingsEvent {
-		[SettingsMethod]
+		[HananokiSettingsRegister]
 		public static SettingsItem Changed() {
 			return new SettingsItem() {
 				mode = 1,
-				displayName = Package.name,
+				displayName = Package.nameNicify,
 				version = Package.version,
 				gui = SymbolSettingsProvider.DrawGUI2,
 			};

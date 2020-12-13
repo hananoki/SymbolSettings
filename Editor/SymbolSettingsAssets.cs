@@ -3,7 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Hananoki.SymbolSettings {
+namespace HananokiEditor.SymbolSettings {
 
 	public class SymbolSettingsAssets : ScriptableObject { }
 

@@ -1,15 +1,16 @@
 ﻿//using Hananoki.SymbolSettings.Localize;
+using HananokiRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+
+using SS = HananokiEditor.SharedModule.S;
 using UnityEditorEditorUserBuildSettings = UnityReflection.UnityEditorEditorUserBuildSettings;
 
-using SS = Hananoki.SharedModule.S;
-
-namespace Hananoki.SymbolSettings {
+namespace HananokiEditor.SymbolSettings {
 	class SymbolSettingsGUI {
 
 		public SettingsProject self;// => target as SymbolSettings;

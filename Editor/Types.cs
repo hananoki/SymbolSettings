@@ -1,8 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using HananokiEditor;
 
 namespace HananokiEditor.SymbolSettings {
 	[Serializable]
@@ -23,6 +21,13 @@ namespace HananokiEditor.SymbolSettings {
 			: this( false, "" ) {
 		}
 	}
+
+	[Serializable]
+	public sealed class AutoSymbol {
+		public string symbolName;
+		public string GUID;
+	}
+
 
 
 	[Serializable]

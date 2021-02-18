@@ -21,6 +21,9 @@ namespace HananokiEditor.SymbolSettings {
 		public static string _EnablePlatform => L.Tr( 6 );
 		public static string _ShowBuilt_inSymbols => L.Tr( 7 );
 		public static string _Nothingcanbespecifiedforthecurrentbuildtarget => L.Tr( 8 );
+		public static string _SymbolName => L.Tr( 9 );
+		public static string _AutomaticsettingatInitializeOnLoad => L.Tr( 10 );
+		public static string _Therewasautomaticsettingofsymbols_Compile_ => L.Tr( 11 );
 	}
 
 #if UNITY_EDITOR

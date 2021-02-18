@@ -1,0 +1,12 @@
+Breyta stillingum
+Virk Byggja Markmál
+forskoðun ScriptingDefineSymbols
+Project "ScriptingDefineSymbols"
+Ritstjóri hluti "ScriptingDefineSymbols"
+BuildOnly "ScriptingDefineSymbols"
+virkja Platform
+Sýna Innbyggður-í táknum
+Ekkert getur verið skilgreindur fyrir yfirstandandi byggja miða
+tákn Name
+Sjálfvirk stilling á InitializeOnLoad
+Það var sjálfvirk stilling af táknum. Safna saman.

@@ -1,7 +1,8 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace HananokiEditor.SymbolSettings {
@@ -11,18 +12,13 @@ namespace HananokiEditor.SymbolSettings {
 
 		public static SettingsProject i;
 
-		public SymbolDataArray m_projectSymbols;
-
-		[NonSerialized]
-		public SymbolDataArray m_editorSymbols;
-
 		public bool[] supportPlatform = new bool[ 64 ];
 
 
 		SettingsProject() {
 			supportPlatform = new bool[ 64 ];
 			supportPlatform[ 1 ] = true;
-			m_projectSymbols = new SymbolDataArray();
+			//m_projectSymbols = new SymbolDataArray();
 		}
 
 		public static void Load() {
@@ -32,22 +28,33 @@ namespace HananokiEditor.SymbolSettings {
 			if( i == null ) {
 				i = new SettingsProject();
 			}
-			i.m_editorSymbols = EditorPrefJson<SymbolDataArray>.Get( Package.editorPrefName );
 			Save();
 		}
 
 		public static void Save() {
-			File.WriteAllText( Package.projectSettingsPath, JsonUtility.ToJson( i ) );
-			EditorPrefJson<SymbolDataArray>.Set( Package.editorPrefName, i.m_editorSymbols );
+			File.WriteAllText( Package.projectSettingsPath, JsonUtility.ToJson( i, true ) );
+			//EditorPrefJson<SymbolDataArray>.Set( Package.editorPrefName, i.m_editorSymbols );
 		}
 
 
-		public static SymbolStringList GetSymbolList() {
+		//public static SymbolStringList GetSymbolList() {
+		//	Load();
+		//	return new SymbolStringList() {
+		//		project = i.m_projectSymbols.datas.Select( x => x.name ).ToArray(),
+		//		editor = i.m_editorSymbols.datas.Select( x => x.name ).ToArray(),
+		//	};
+		//}
+
+
+		public static BuildTargetGroup[] GetCuurentSupportTarget() {
 			Load();
-			return new SymbolStringList() {
-				project = i.m_projectSymbols.datas.Select( x => x.name ).ToArray(),
-				editor = i.m_editorSymbols.datas.Select( x => x.name ).ToArray(),
-			};
+			var lst = new List<BuildTargetGroup>();
+			for( int i = 0; i < 64; i++ ) {
+				if( SettingsProject.i.supportPlatform[ i ] ) {
+					lst.Add( (BuildTargetGroup) i );
+				}
+			}
+			return lst.ToArray();
 		}
 	}
 }

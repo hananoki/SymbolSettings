@@ -1,4 +1,4 @@
-﻿設定を編集する
+設定を編集する
 現在のビルドターゲット
 ScriptingDefineSymbolsのプレビュー
 プロジェクト "ScriptingDefineSymbols"
@@ -7,3 +7,6 @@ ScriptingDefineSymbolsのプレビュー
 有効なプラットフォーム
 組み込みシンボルを表示する
 現在のビルドターゲットで指定できるものがありません
+シンボル名
+InitializeOnLoad時に自動設定
+シンボルの自動設定がありました。コンパイルを実行します。

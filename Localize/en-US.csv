@@ -1,4 +1,4 @@
-﻿Edit Settings
+Edit Settings
 Active Build Target
 Preview ScriptingDefineSymbols
 Project "ScriptingDefineSymbols"
@@ -7,3 +7,6 @@ BuildOnly "ScriptingDefineSymbols"
 Enable Platform
 Show Built-in Symbols
 Nothing can be specified for the current build target
+Symbol Name
+Automatic setting at InitializeOnLoad
+There was automatic setting of symbols. Compile.

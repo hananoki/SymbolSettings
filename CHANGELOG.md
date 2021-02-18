@@ -1,5 +1,13 @@
 # SymbolSettings
 
+## [2.0.0] - 2021-02-19
+- SharedModule v1.7.6 or later
+
+### Changed
+- Replaced interface to multi-column base
+- Added the ability to automatically set symbols when a specific GUID asset is found
+- Abolished project-specific symbol definition
+
 ## [1.0.8] - 2020-12-13
 - SharedModule v1.7.3 or later
 

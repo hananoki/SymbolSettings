@@ -1,0 +1,12 @@
+Urejanje nastavitev
+Aktivno Build Target
+predogled ScriptingDefineSymbols
+Projekt "ScriptingDefineSymbols"
+Urednik skupni rabi "ScriptingDefineSymbols"
+BuildOnly "ScriptingDefineSymbols"
+Omogoči Platform
+Prikaži Vgrajen Simboli
+Nič se lahko določi za trenutni cilj graditi
+simbol Ime
+Samodejna nastavitev na InitializeOnLoad
+Tam je bil samodejno nastavitev simbolov. Prevajanju.

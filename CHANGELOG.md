@@ -1,5 +1,20 @@
 # SymbolSettings
 
+## [2.1.0] - 2021-03-01
+- SharedModule v1.7.7 or later
+
+### Added
+- Dragging and swapping is now possible.
+- Restore the last selection.
+
+### Changed
+- Separated the current symbol state into separate items
+- Disabled at compile time
+
+### Fixed
+- Fixed the tree tab not being reflected in language switching
+- Fixed a bug related to auto-configuration.
+
 ## [2.0.0] - 2021-02-19
 - SharedModule v1.7.6 or later
 

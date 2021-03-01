@@ -1,11 +1,10 @@
-﻿
-
-using HananokiEditor.SharedModule;
+﻿using HananokiEditor.SharedModule;
 using HananokiRuntime;
-using UnityEditor;
 using UnityEngine;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 using SS = HananokiEditor.SharedModule.S;
+
+
 
 namespace HananokiEditor.SymbolSettings {
 	public class SettingsDrawer_AutoSymbols {
@@ -14,7 +13,7 @@ namespace HananokiEditor.SymbolSettings {
 		public static SettingsItem RegisterSetting() {
 			return new SettingsItem() {
 				mode = 0,
-				displayName = Package.nameNicify + "/AutoSymbols",
+				displayName = Package.nameNicify + "/Auto Symbols",
 				version = "",
 				gui = DrawGUI,
 				customLayoutMode = true,
@@ -24,9 +23,16 @@ namespace HananokiEditor.SymbolSettings {
 		static TreeView_AutoSymbols m_treeView_AutoSymbols;
 
 
+		public static void Localize() {
+			m_treeView_AutoSymbols?.Localize();
+		}
+
+
 		public static void DrawGUI() {
 			E.Load();
 			Helper.New( ref m_treeView_AutoSymbols );
+
+			ScopeIsCompile.Begin();
 
 			HGUIToolbar.Begin();
 			if( HGUIToolbar.Button( EditorIcon.toolbar_plus ) ) _add();
@@ -44,14 +50,16 @@ namespace HananokiEditor.SymbolSettings {
 			}
 			GUILayout.FlexibleSpace();
 
-			ScopeDisable.Begin( !Utils.changeSetting );
-			if( !Utils.changeSetting ) HGUIToolbar.Button( SS._Apply );
+			if( !Utils.changeSetting ) {
+				if( HGUIToolbar.Button( SS._Apply ) ) {
+					Utils.ApplySymbols();
+				}
+			}
 			else {
 				if( HGUIToolbar.Button( EditorHelper.TempContent( SS._Apply, EditorIcon.warning ) ) ) {
 					Utils.ApplySymbols();
 				}
 			}
-			ScopeDisable.End();
 			HGUIToolbar.End();
 
 			/////////////
@@ -59,6 +67,8 @@ namespace HananokiEditor.SymbolSettings {
 			using( new GUILayoutScope( 1, 0 ) ) {
 				m_treeView_AutoSymbols.DrawLayoutGUI();
 			}
+
+			ScopeIsCompile.End();
 		}
 
 

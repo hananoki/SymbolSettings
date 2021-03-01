@@ -7,6 +7,8 @@ using UnityEditor;
 using UnityEngine;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 
+
+
 namespace HananokiEditor.SymbolSettings {
 	[InitializeOnLoad]
 	public sealed class Utils {
@@ -37,12 +39,21 @@ namespace HananokiEditor.SymbolSettings {
 
 				var lst = PlayerSettingsUtils.GetScriptingDefineSymbolsAtList();
 				var work = new List<string>( lst );
+
 				foreach( var p in E.i.m_autoSymbol ) {
+					// シンボルが無効なのでスルー
 					if( p.symbolName.IsEmpty() ) continue;
 
+					// 項目がが無効化されているのでスルー
+					if( !p.enable ) continue;
+
 					var path = p.GUID.ToAssetPath();
-					if( !path.IsExistsFile() && !path.IsExistsDirectory() ) continue;
-					work.Add( p.symbolName );
+					if( !path.IsExistsFile() && !path.IsExistsDirectory() ) {
+						work.Remove( p.symbolName );
+					}
+					else {
+						work.Add( p.symbolName );
+					}
 				}
 				work = work.Distinct().ToList();
 
@@ -52,6 +63,7 @@ namespace HananokiEditor.SymbolSettings {
 				var w2 = work2.OrderBy( x => x ).ToList();
 				bool check = false;
 				for( int i = 0; i < w1.Count; i++ ) {
+					if( w2.Count <= i ) continue;
 					if( w1[ i ] != w2[ i ] ) {
 						check = true;
 						break;
@@ -68,6 +80,14 @@ namespace HananokiEditor.SymbolSettings {
 				Debug.LogException( e );
 			}
 		}
-	}
 
+
+		public static void InitLocalize() {
+			EditorApplication.delayCall += () => {
+				SettingsDrawer_EditorSymbols.Localize();
+				SettingsDrawer_ActiveSymbols.Localize();
+				SettingsDrawer_AutoSymbols.Localize();
+			};
+		}
+	}
 }

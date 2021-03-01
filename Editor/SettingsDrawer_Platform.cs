@@ -4,6 +4,8 @@ using UnityEngine;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 using P = HananokiEditor.SymbolSettings.SettingsProject;
 
+
+
 namespace HananokiEditor.SymbolSettings {
 	public class SettingsDrawer_Platform {
 		[HananokiSettingsRegister]
@@ -23,6 +25,8 @@ namespace HananokiEditor.SymbolSettings {
 			P.Load();
 			var targetGroupList = PlatformUtils.GetSupportList();
 
+			ScopeIsCompile.Begin();
+
 			ScopeVertical.Begin();
 			HEditorGUILayout.HeaderTitle( "Platform" );
 			GUILayout.Space( 8 );
@@ -34,12 +38,12 @@ namespace HananokiEditor.SymbolSettings {
 					P.i.supportPlatform[ (int) t ] = _b;
 					P.Save();
 					//BuildAssistWindow.ChangeActiveTarget();
-					Utils.m_treeView_EditorSymbols=null;
+					Utils.m_treeView_EditorSymbols = null;
 				}
 			}
 			ScopeVertical.End();
 
-
+			ScopeIsCompile.End();
 		}
 
 	}

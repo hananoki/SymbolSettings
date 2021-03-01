@@ -1,9 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+
+
 
 namespace HananokiEditor.SymbolSettings {
 
@@ -18,7 +19,6 @@ namespace HananokiEditor.SymbolSettings {
 		SettingsProject() {
 			supportPlatform = new bool[ 64 ];
 			supportPlatform[ 1 ] = true;
-			//m_projectSymbols = new SymbolDataArray();
 		}
 
 		public static void Load() {
@@ -33,17 +33,7 @@ namespace HananokiEditor.SymbolSettings {
 
 		public static void Save() {
 			File.WriteAllText( Package.projectSettingsPath, JsonUtility.ToJson( i, true ) );
-			//EditorPrefJson<SymbolDataArray>.Set( Package.editorPrefName, i.m_editorSymbols );
 		}
-
-
-		//public static SymbolStringList GetSymbolList() {
-		//	Load();
-		//	return new SymbolStringList() {
-		//		project = i.m_projectSymbols.datas.Select( x => x.name ).ToArray(),
-		//		editor = i.m_editorSymbols.datas.Select( x => x.name ).ToArray(),
-		//	};
-		//}
 
 
 		public static BuildTargetGroup[] GetCuurentSupportTarget() {

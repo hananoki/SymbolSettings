@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 
 
+
 namespace HananokiEditor.SymbolSettings {
 	[System.Serializable]
 	public class SettingsEditor {
@@ -49,7 +50,7 @@ namespace HananokiEditor.SymbolSettings {
 			Save();
 		}
 		public static void AddAutoSymbol() {
-			i.m_autoSymbol.Add( new AutoSymbol() );
+			i.m_autoSymbol.Add( new AutoSymbol { enable = true, } );
 			Save();
 		}
 	}

@@ -31,6 +31,7 @@ namespace HananokiEditor.SymbolSettings {
     [HananokiEditorLocalizeRegister]
     public static void Changed() {
 			EditorLocalize.Load( Package.name, "c3b2d643f230b594cabadfe0990156e2" );
+			Utils.InitLocalize();
 		}
 	}
 #endif

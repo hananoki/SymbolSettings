@@ -1,14 +1,15 @@
-﻿
-using System.Collections.Generic;
+﻿using HananokiEditor.Extensions;
 using HananokiEditor.SharedModule;
 using HananokiRuntime;
-using HananokiEditor.Extensions;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 using UnityReflection;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 using SS = HananokiEditor.SharedModule.S;
+
+
 
 namespace HananokiEditor.SymbolSettings {
 	public class SettingsDrawer_EditorSymbols {
@@ -24,35 +25,27 @@ namespace HananokiEditor.SymbolSettings {
 			};
 		}
 
-		static TreeView_ActiveSymbols m_treeView_ActiveSymbols;
 
+		public static void Localize() {
+			Utils.m_treeView_EditorSymbols?.Localize();
+		}
 
 		public static void DrawGUI() {
 
 			E.Load();
 			Helper.New( ref Utils.m_treeView_EditorSymbols );
-			Helper.New( ref m_treeView_ActiveSymbols );
-			//var style = new GUIStyle( EditorStyles.toolbar );
-			//style.fixedHeight = 24;
 
 			ScopeIsCompile.Begin();
 
 			HGUIToolbar.Begin();
 
-			
 
-			if( Utils.activeSymbol ) {
-				//ScopeDisable.Begin( !m_treeView_ActiveSymbols.IsRemove() );
-				//if( HGUIToolbar.Button( EditorIcon.toolbar_minus ) ) _remove();
-				//ScopeDisable.End();
-			}
-			else {
-				ScopeDisable.Begin( Utils.activeSymbol );				if( HGUIToolbar.Button( EditorIcon.toolbar_plus ) ) _add();
-				ScopeDisable.Begin( !Utils.m_treeView_EditorSymbols.HasSelection() );
-				if( HGUIToolbar.Button( EditorIcon.toolbar_minus ) ) _remove();
-				ScopeDisable.End();
-			}
-			
+			ScopeDisable.Begin( Utils.activeSymbol ); if( HGUIToolbar.Button( EditorIcon.toolbar_plus ) ) _add();
+			ScopeDisable.Begin( !Utils.m_treeView_EditorSymbols.HasSelection() );
+			if( HGUIToolbar.Button( EditorIcon.toolbar_minus ) ) _remove();
+			ScopeDisable.End();
+
+
 			GUILayout.FlexibleSpace();
 
 			if( !Utils.activeSymbol ) {
@@ -64,20 +57,12 @@ namespace HananokiEditor.SymbolSettings {
 				ScopeDisable.End();
 			}
 
-			if( HGUIToolbar.Toggle( Utils.activeSymbol, "ActiveSymbols".nicify(), UnityEditorEditorUserBuildSettings.activeBuildTargetGroup.IconSmall() ) ) {
-				Utils.activeSymbol.Invert();
-			}
 
 			HGUIToolbar.End();
 
 			/////////////////
 			using( new GUILayoutScope( 1, 0 ) ) {
-				if( Utils.activeSymbol ) {
-					m_treeView_ActiveSymbols.DrawLayoutGUI();
-				}
-				else {
-					Utils.m_treeView_EditorSymbols.DrawLayoutGUI();
-				}
+				Utils.m_treeView_EditorSymbols.DrawLayoutGUI();
 			}
 			ScopeIsCompile.End();
 

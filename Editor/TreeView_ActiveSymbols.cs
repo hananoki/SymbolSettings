@@ -8,6 +8,8 @@ using UnityEngine;
 using E = HananokiEditor.SymbolSettings.SettingsEditor;
 using SS = HananokiEditor.SharedModule.S;
 
+
+
 namespace HananokiEditor.SymbolSettings {
 	using Item = TreeView_ActiveSymbols.Item;
 
@@ -49,6 +51,10 @@ namespace HananokiEditor.SymbolSettings {
 		}
 
 
+		public void Localize() {
+			multiColumnHeader.state.columns[ 1 ].headerContent = new GUIContent( S._SymbolName );
+		}
+
 
 		public void RegisterFiles() {
 			Utils.changeEditorSymbols.Value = false;
@@ -73,14 +79,23 @@ namespace HananokiEditor.SymbolSettings {
 
 		public void ReloadAndSorting() {
 			Reload();
+			RollbackLastSelect();
 		}
 
 
-		public bool IsRemove() {
-			if( !HasSelection() ) return false;
-			var e = GetSelectionItems().Where( x => 0 <= m_scriptingDefineSymbols.IndexOf( x.displayName ) );
-			return 0 < e.Count();
+		void _removeSymbol( string symbol ) {
+			m_scriptingDefineSymbols.Remove( symbol );
+			PlayerSettingsUtils.SetScriptingDefineSymbols( m_scriptingDefineSymbols );
+			AssetDatabase.Refresh();
+			RegisterFiles();
 		}
+
+
+		protected override void SingleClickedItem( int id ) {
+			var item = ToItem( id );
+			BackupLastSelect( item );
+		}
+
 
 		protected override void OnRowGUI( RowGUIArgs args ) {
 			var item = (Item) args.item;
@@ -89,6 +104,12 @@ namespace HananokiEditor.SymbolSettings {
 				var col1 = ColorUtils.RGB( 169, 201, 255 );
 				col1.a = 0.5f;
 				EditorGUI.DrawRect( args.rowRect, col1 );
+
+				if( HEditorGUI.IconButton( args.rowRect.AlignR( 16 ), EditorIcon.minus ) ) {
+					EditorApplication.delayCall += () => {
+						_removeSymbol( item.displayName );
+					};
+				}
 			}
 
 			for( var i = 0; i < args.GetNumVisibleColumns(); i++ ) {

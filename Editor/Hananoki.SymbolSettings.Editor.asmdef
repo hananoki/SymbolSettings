@@ -1,5 +1,6 @@
 {
   "name": "Hananoki.SymbolSettings.Editor",
+  "rootNamespace": "",
   "references": [
     "Hananoki.EditorIcon.Editor",
     "Hananoki.SharedModule.Runtime",

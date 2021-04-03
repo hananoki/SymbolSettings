@@ -63,7 +63,10 @@ namespace HananokiEditor.SymbolSettings {
 				var w2 = work2.OrderBy( x => x ).ToList();
 				bool check = false;
 				for( int i = 0; i < w1.Count; i++ ) {
-					if( w2.Count <= i ) continue;
+					if( w2.Count <= i ) {
+						check = true;
+						continue;
+					}
 					if( w1[ i ] != w2[ i ] ) {
 						check = true;
 						break;

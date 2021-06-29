@@ -1,7 +1,10 @@
-# SymbolSettings
+# Symbol Settings
+
+## [2.1.3] - 2021-06-30
+- `SharedModule v1.11.0` or later
 
 ## [2.1.2] - 2021-06-21
-- SharedModule v1.10.0 or later
+- `SharedModule v1.10.0` or later
 
 ## [2.1.1] - 2021-04-03
 

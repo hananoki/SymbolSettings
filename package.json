@@ -1,7 +1,7 @@
 {
   "name": "com.hananoki.symbol-settings",
   "displayName": "SymbolSettings",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "unity": "2018.3",
   "description": "Tool to manage ScriptingDefineSymbols",
   "keywords": [

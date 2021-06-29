@@ -96,8 +96,7 @@ namespace HananokiEditor.SymbolSettings {
 		}
 
 
-		protected override void OnRowGUI( RowGUIArgs args ) {
-			var item = (Item) args.item;
+		protected override void OnRowGUI( Item item, RowGUIArgs args ) {
 
 			if( 0 <= m_scriptingDefineSymbols.IndexOf( item.displayName ) ) {
 				var col1 = ColorUtils.RGB( 169, 201, 255 );
